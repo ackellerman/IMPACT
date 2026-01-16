@@ -1,6 +1,6 @@
 !#######################################################################
-! MSIS® (NRL-SOF-014-1) SOFTWARE
-! NRLMSIS® empirical atmospheric model software. Use is governed by the
+! MSISï¿½ (NRL-SOF-014-1) SOFTWARE
+! NRLMSISï¿½ empirical atmospheric model software. Use is governed by the
 ! Open Source Academic Research License Agreement contained in the file
 ! nrlmsis2.1_license.txt, which is part of this software package. BY
 ! USING OR MODIFYING THIS SOFTWARE, YOU ARE AGREEING TO THE TERMS AND
@@ -265,7 +265,7 @@ contains
 
     implicit none
 
-    integer             :: n, m, j, k
+    integer             :: j, k
     real(kind=rp)       :: gammaterm0
 
     ! Vertical parameter counter (number of vertical parameters in the parmeter file)
@@ -342,8 +342,6 @@ contains
         integer, intent(in)               :: nl
         integer, intent(in)               :: maxnbf
         character(2), intent(in)          :: name
-
-        integer                           :: iz
 
         ! Allocate and initialize subset structure
         subset%name = name

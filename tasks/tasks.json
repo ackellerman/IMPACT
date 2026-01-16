@@ -1,0 +1,1350 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-01-16T22:39:19.174863Z",
+  "project": "IMPACT",
+  "description": "Atmospheric model analysis tools",
+  "tasks": {
+    "0": {
+      "title": "Foundation",
+      "status": "done",
+      "description": "Initial project setup and infrastructure",
+      "doc": "tasks/docs/task-0.md",
+      "children": {
+        "0": {
+          "title": "Project Setup",
+          "status": "done",
+          "description": "Configure project structure and dependencies",
+          "doc": null,
+          "children": {}
+        }
+      }
+    },
+    "1": {
+      "title": "Code Review",
+      "status": "planned",
+      "description": "Comprehensive code review of NRLMSIS 2.1 and IMPACT_MATLAB components",
+      "doc": "tasks/docs/task-1.md",
+      "children": {
+        "0": {
+          "title": "NRLMSIS 2.1 Fortran Code Review",
+          "status": "planned",
+          "description": "Review Fortran 90 atmospheric model implementation",
+          "doc": "tasks/docs/task-1.0.md",
+          "children": {
+            "0": {
+              "title": "Review core subroutine structure",
+              "status": "planned",
+              "description": "Analyze main computational subroutines and data structures",
+              "doc": null,
+              "children": {}
+            },
+            "1": {
+              "title": "Review module organization",
+              "status": "planned",
+              "description": "Examine module dependencies and organization",
+              "doc": null,
+              "children": {}
+            }
+          }
+        },
+        "1": {
+          "title": "IMPACT_MATLAB Code Review",
+          "status": "planned",
+          "description": "Review MATLAB analysis scripts",
+          "doc": "tasks/docs/task-1.1.md",
+          "children": {
+            "0": {
+              "title": "Review data processing scripts",
+              "status": "planned",
+              "description": "Analyze MATLAB data processing and visualization scripts",
+              "doc": null,
+              "children": {}
+            },
+            "1": {
+              "title": "Review utility functions",
+              "status": "planned",
+              "description": "Examine supporting utility functions and scripts",
+              "doc": null,
+              "children": {}
+            }
+          }
+        },
+        "2": {
+          "title": "Shell Scripts Review",
+          "status": "planned",
+          "description": "Review build and execution shell scripts",
+          "doc": "tasks/docs/task-1.2.md",
+          "children": {
+            "0": {
+              "title": "Review build scripts",
+              "status": "planned",
+              "description": "Analyze compilation and build automation scripts",
+              "doc": null,
+              "children": {}
+            },
+            "1": {
+              "title": "Review execution scripts",
+              "status": "planned",
+              "description": "Examine run scripts and automation",
+              "doc": null,
+              "children": {}
+            }
+          }
+        },
+        "3": {
+          "title": "Fortran Core Infrastructure Review",
+          "status": "done",
+          "description": "Review msis_constants.F90, msis_utils.F90, and msis_init.F90 for code quality, constants definitions, utility subroutines, and initialization procedures",
+          "doc": "tasks/docs/task-1.3.md",
+          "children": {
+            "0": {
+              "title": "Review msis_constants.F90",
+              "status": "done",
+              "description": "Review physical constants, conversion factors, and parameter definitions (196 lines) for accuracy and completeness",
+              "doc": "tasks/docs/task-1.3.0.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-15T19:07:11.549090Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-15T19:08:52.172388Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-15T19:10:05.546738Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-15T19:11:50.646427Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-15T19:14:41.347349Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-15T19:16:11.938907Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-15T19:18:31.373950Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-15T19:20:31.716082Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-15T19:24:00.398341Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-15T19:26:52.745749Z"
+                }
+              ]
+            },
+            "1": {
+              "title": "Review msis_utils.F90",
+              "status": "done",
+              "description": "Review utility subroutines for calculations, array handling, and supporting functions (281 lines) for code quality and efficiency",
+              "doc": "tasks/docs/task-1.3.1.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-15T19:51:38.672362Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-15T19:55:42.976535Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-15T19:56:41.001195Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-15T19:59:47.907679Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-15T20:02:37.974765Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-15T20:06:11.769993Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-15T20:08:11.936771Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-15T20:11:16.968772Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-15T20:13:36.925304Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-15T20:17:28.920743Z"
+                }
+              ]
+            },
+            "2": {
+              "title": "Review msis_init.F90",
+              "status": "done",
+              "description": "Review initialization procedures for model setup, parameter initialization, and default configurations (635 lines) for correctness and completeness",
+              "doc": "tasks/docs/task-1.3.2.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-15T20:34:32.379269Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-15T20:39:40.810161Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-15T20:40:27.348333Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-15T20:42:47.884761Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-15T20:45:45.258740Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-15T20:48:07.438372Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-15T20:49:46.086601Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-15T20:51:52.272381Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-15T20:54:08.973180Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-15T20:58:25.618748Z"
+                }
+              ]
+            }
+          }
+        },
+        "4": {
+          "title": "Fortran Computational Core Review",
+          "status": "planned",
+          "description": "Review msis_gfn.F90 (horizontal expansion), msis_tfn.F90 (vertical temperature), msis_dfn.F90 (vertical density), and msis_calc.F90 (new interface)",
+          "doc": "tasks/docs/task-1.4.md",
+          "children": {
+            "0": {
+              "title": "Review msis_gfn.F90",
+              "status": "done",
+              "description": "Review horizontal expansion functions for geographic and longitude-dependent calculations (540 lines) for algorithm correctness",
+              "doc": "tasks/docs/task-1.4.0.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-15T21:28:32.067207Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-15T21:32:11.885504Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-15T21:33:15.924347Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-15T21:42:27.775592Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-15T21:45:33.425881Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-15T21:46:39.412506Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-15T21:50:06.204546Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-15T21:51:22.387546Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-15T21:53:29.206955Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-15T21:56:17.929406Z"
+                }
+              ]
+            },
+            "1": {
+              "title": "Review msis_tfn.F90",
+              "status": "done",
+              "description": "Review vertical temperature profile functions and temperature gradient calculations (176 lines) for physical accuracy",
+              "doc": "tasks/docs/task-1.4.1.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-15T22:54:59.417293Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-15T22:58:42.722335Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-15T22:59:37.602570Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-15T23:16:19.574584Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-15T23:16:30.663032Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-15T23:17:21.974182Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-15T23:18:22.639371Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-15T23:23:08.888679Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-15T23:28:47.775748Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-15T23:32:24.415007Z"
+                }
+              ]
+            },
+            "2": {
+              "title": "Review msis_dfn.F90",
+              "status": "done",
+              "description": "Review vertical density profile functions for neutral species densities (539 lines) for computational accuracy",
+              "doc": "tasks/docs/task-1.4.2.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-15T23:33:30.833734Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-15T23:42:26.627454Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-15T23:43:43.981371Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-15T23:44:29.334094Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-15T23:47:21.408345Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-15T23:51:57.025508Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-15T23:55:38.090247Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-15T23:56:34.194957Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-16T00:01:41.655151Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-16T00:06:06.197178Z"
+                }
+              ]
+            },
+            "3": {
+              "title": "Review msis_calc.F90",
+              "status": "reviewing-plan-architecture",
+              "description": "Review new model interface function for external API access and main calculation dispatch (223 lines) for interface design",
+              "doc": "tasks/docs/task-1.4.3.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-16T00:55:10.352263Z"
+                }
+              ]
+            }
+          }
+        },
+        "5": {
+          "title": "Fortran Interfaces and Testing Review",
+          "status": "planned",
+          "description": "Review msis_gtd8d.F90 (legacy interface), msis2.1_test.F90 (test program), and compile_msis.sh (compilation script)",
+          "doc": "tasks/docs/task-1.5.md",
+          "children": {
+            "0": {
+              "title": "Review msis_gtd8d.F90",
+              "status": "planned",
+              "description": "Review legacy interface function for backward compatibility (146 lines) for accuracy and usage clarity",
+              "doc": "tasks/docs/task-1.5.0.md",
+              "children": {}
+            },
+            "1": {
+              "title": "Review msis2.1_test.F90",
+              "status": "planned",
+              "description": "Review test program structure, input parsing, output generation, and test coverage (55 lines) for completeness and clarity",
+              "doc": "tasks/docs/task-1.5.1.md",
+              "children": {}
+            },
+            "2": {
+              "title": "Review compile_msis.sh",
+              "status": "planned",
+              "description": "Review compilation script for build process, compiler flags, dependency ordering, and error handling (30 lines) for reproducibility",
+              "doc": "tasks/docs/task-1.5.2.md",
+              "children": {}
+            }
+          }
+        },
+        "6": {
+          "title": "MATLAB Data I/O and Utilities Review",
+          "status": "planned",
+          "description": "Review get_msis_dat.m, makeMSISinputs.m, and def_testdata.m for data input/output handling and test data definitions",
+          "doc": "tasks/docs/task-1.6.md",
+          "children": {
+            "0": {
+              "title": "Review get_msis_dat.m",
+              "status": "planned",
+              "description": "Review MSIS data retrieval function (201 lines) for data handling, input validation, and output formatting",
+              "doc": "tasks/docs/task-1.6.0.md",
+              "children": {}
+            },
+            "1": {
+              "title": "Review makeMSISinputs.m and def_testdata.m",
+              "status": "planned",
+              "description": "Review input generation functions (39+39=78 lines) for file I/O, data formatting, and test data definitions",
+              "doc": "tasks/docs/task-1.6.1.md",
+              "children": {}
+            }
+          }
+        },
+        "7": {
+          "title": "MATLAB Core Analysis Scripts Review",
+          "status": "planned",
+          "description": "Review calc_Edissipation.m, calc_ionization.m, fang10_precip.m (167 lines), and sav_fang10_coeff.m for energy dissipation, ionization, precipitation analysis, and coefficient handling",
+          "doc": "tasks/docs/task-1.7.md",
+          "children": {
+            "0": {
+              "title": "Review energy dissipation and ionization scripts",
+              "status": "planned",
+              "description": "Review calc_Edissipation.m (52 lines) and calc_ionization.m (41 lines) for calculation accuracy and physical correctness",
+              "doc": "tasks/docs/task-1.7.0.md",
+              "children": {}
+            },
+            "1": {
+              "title": "Review Fang precipitation model and coefficient handling",
+              "status": "planned",
+              "description": "Review fang10_precip.m (167 lines) and sav_fang10_coeff.m (27 lines) for precipitation calculations and data persistence",
+              "doc": "tasks/docs/task-1.7.1.md",
+              "children": {}
+            }
+          }
+        },
+        "8": {
+          "title": "MATLAB Magnetic Field Scripts Review",
+          "status": "planned",
+          "description": "Review dip_losscone.m, dipole_mirror_altitude.m, mirror_altitude.m, and bounce_time_arr.m for magnetic field calculations and particle motion",
+          "doc": "tasks/docs/task-1.8.md",
+          "children": {
+            "0": {
+              "title": "Review magnetic field calculations",
+              "status": "planned",
+              "description": "Review dip_losscone.m (16 lines), dipole_mirror_altitude.m (31 lines), and mirror_altitude.m (29 lines) for magnetic field physics implementation",
+              "doc": "tasks/docs/task-1.8.0.md",
+              "children": {}
+            },
+            "1": {
+              "title": "Review bounce time calculation",
+              "status": "planned",
+              "description": "Review bounce_time_arr.m (53 lines) for particle motion and field line calculations",
+              "doc": "tasks/docs/task-1.8.1.md",
+              "children": {}
+            }
+          }
+        },
+        "9": {
+          "title": "Documentation and License Review",
+          "status": "planned",
+          "description": "Review README files, license headers, code comments, and parameter files (msis21.parm, msis2.1_test_in.txt)",
+          "doc": "tasks/docs/task-1.9.md",
+          "children": {
+            "0": {
+              "title": "Review project README and documentation files",
+              "status": "planned",
+              "description": "Review readme.txt, project structure documentation, and user guides for clarity, completeness, and accuracy",
+              "doc": "tasks/docs/task-1.9.0.md",
+              "children": {}
+            }
+          }
+        }
+      }
+    },
+    "2": {
+      "title": "Testing",
+      "status": "planned",
+      "description": "Establish testing infrastructure and validation procedures",
+      "doc": "tasks/docs/task-2.md",
+      "children": {
+        "0": {
+          "title": "NRLMSIS 2.1 Testing",
+          "status": "planned",
+          "description": "Create comprehensive test suite for Fortran model",
+          "doc": "tasks/docs/task-2.0.md",
+          "children": {
+            "0": {
+              "title": "Unit tests for core functions",
+              "status": "planned",
+              "description": "Develop unit tests for computational functions",
+              "doc": null,
+              "children": {}
+            },
+            "1": {
+              "title": "Integration tests",
+              "status": "planned",
+              "description": "Create integration tests for model workflow",
+              "doc": null,
+              "children": {}
+            }
+          }
+        },
+        "1": {
+          "title": "MATLAB Testing",
+          "status": "planned",
+          "description": "Establish testing for MATLAB analysis scripts",
+          "doc": "tasks/docs/task-2.1.md",
+          "children": {
+            "0": {
+              "title": "Script validation tests",
+              "status": "planned",
+              "description": "Create validation tests for MATLAB analysis",
+              "doc": null,
+              "children": {}
+            },
+            "1": {
+              "title": "Data verification tests",
+              "status": "planned",
+              "description": "Develop tests for data processing accuracy",
+              "doc": null,
+              "children": {}
+            }
+          }
+        },
+        "2": {
+          "title": "CI/CD Setup",
+          "status": "planned",
+          "description": "Configure continuous integration pipeline",
+          "doc": "tasks/docs/task-2.2.md",
+          "children": {
+            "0": {
+              "title": "Configure automated testing",
+              "status": "planned",
+              "description": "Set up automated test execution",
+              "doc": null,
+              "children": {}
+            },
+            "1": {
+              "title": "Configure build automation",
+              "status": "planned",
+              "description": "Set up automated build and deployment",
+              "doc": null,
+              "children": {}
+            }
+          }
+        },
+        "3": {
+          "title": "Fortran Unit Testing",
+          "status": "planned",
+          "description": "Create comprehensive unit tests for each Fortran module with specific test coverage targets and validation against reference outputs",
+          "doc": "tasks/docs/task-2.3.md",
+          "children": {
+            "0": {
+              "title": "Test core infrastructure modules",
+              "status": "planned",
+              "description": "Create unit tests for msis_constants, msis_utils, and msis_init modules with >80% coverage for constants validation, utility functions, and initialization procedures",
+              "doc": "tasks/docs/task-2.3.0.md",
+              "children": {}
+            },
+            "1": {
+              "title": "Test computational core functions",
+              "status": "planned",
+              "description": "Create unit tests for msis_gfn, msis_tfn, msis_dfn, and msis_calc with focus on mathematical accuracy, convergence, and boundary condition handling",
+              "doc": "tasks/docs/task-2.3.1.md",
+              "children": {}
+            }
+          }
+        },
+        "4": {
+          "title": "MATLAB Testing",
+          "status": "planned",
+          "description": "Create comprehensive test suite for MATLAB analysis scripts including unit tests, input validation, and numerical accuracy verification",
+          "doc": "tasks/docs/task-2.4.md",
+          "children": {
+            "0": {
+              "title": "Test MATLAB data I/O utilities",
+              "status": "planned",
+              "description": "Create tests for get_msis_dat.m, makeMSISinputs.m, and def_testdata.m verifying file I/O, data parsing, and test data generation",
+              "doc": "tasks/docs/task-2.4.0.md",
+              "children": {}
+            },
+            "1": {
+              "title": "Test MATLAB core analysis scripts",
+              "status": "planned",
+              "description": "Create tests for calc_Edissipation.m, calc_ionization.m, fang10_precip.m, and sav_fang10_coeff.m verifying energy calculations, ionization rates, and precipitation models",
+              "doc": "tasks/docs/task-2.4.1.md",
+              "children": {}
+            },
+            "2": {
+              "title": "Test MATLAB magnetic field scripts",
+              "status": "planned",
+              "description": "Create tests for dip_losscone.m, dipole_mirror_altitude.m, mirror_altitude.m, and bounce_time_arr.m verifying magnetic field calculations and particle motion",
+              "doc": "tasks/docs/task-2.4.2.md",
+              "children": {}
+            }
+          }
+        },
+        "5": {
+          "title": "Integration and Validation",
+          "status": "planned",
+          "description": "Test integration between Fortran and MATLAB components, verify numerical accuracy, and validate against reference data",
+          "doc": "tasks/docs/task-2.5.md",
+          "children": {
+            "0": {
+              "title": "Test compilation with different compiler flags",
+              "status": "planned",
+              "description": "Test Fortran compilation with various optimization levels (-O0, -O2, -O3), precision settings (single/double), and warning flags for build robustness",
+              "doc": "tasks/docs/task-2.5.0.md",
+              "children": {}
+            },
+            "1": {
+              "title": "Verify test execution against reference outputs",
+              "status": "planned",
+              "description": "Compare msis2.1_test_out.txt with msis2.1_test_ref_dp.txt using diff and verify numerical accuracy within specified tolerance (1e-6 for double precision)",
+              "doc": "tasks/docs/task-2.5.1.md",
+              "children": {}
+            },
+            "2": {
+              "title": "Test end-to-end workflows",
+              "status": "planned",
+              "description": "Create integration tests that run complete workflows from Fortran model output through MATLAB analysis scripts to verify data flow and compatibility",
+              "doc": "tasks/docs/task-2.5.2.md",
+              "children": {}
+            }
+          }
+        }
+      }
+    },
+    "3": {
+      "title": "Milestone 3: Precipitation Code Literature Validation",
+      "status": "done",
+      "description": "Comprehensive literature validation of MATLAB precipitation code against published references, focusing on Fang et al. (2010) model, atmospheric physics, and magnetic dipole mechanics",
+      "doc": "tasks/docs/task-3.md",
+      "children": {
+        "0": {
+          "title": "Phase 3.0: Literature Foundation and References",
+          "status": "done",
+          "description": "Collect and catalog primary literature references for model validation",
+          "doc": "tasks/docs/task-3.0.md",
+          "children": {
+            "0": {
+              "title": "Collect and catalog primary literature references",
+              "status": "done",
+              "description": "Collect Fang et al. (2010) paper equations, MSIS 2.0/2.1 documentation, dipole bounce period references, and particle loss cone theory references",
+              "doc": "tasks/docs/task-3.0.0.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-16T02:19:05.977177Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-16T02:20:29.545236Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-16T02:21:25.799624Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-16T02:34:19.807970Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-16T02:34:19.980085Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-16T02:38:12.667880Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-16T02:43:32.242528Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-16T02:46:31.169666Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-16T02:46:55.422982Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-16T02:47:07.466257Z",
+                  "completions_confirmed": {
+                    "phase": {
+                      "id": "3.0",
+                      "title": "Phase 3.0: Literature Foundation and References",
+                      "confirmed_at": "2026-01-16T02:47:07.466229Z"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "1": {
+          "title": "Phase 3.1: Fang 2010 Model Core Validation",
+          "status": "done",
+          "description": "Validate core calculations from Fang et al. (2010) paper: energy dissipation parameterization and ionization rate",
+          "doc": "tasks/docs/task-3.1.md",
+          "children": {
+            "0": {
+              "title": "Validate energy dissipation parameterization (calc_Edissipation.m)",
+              "status": "done",
+              "description": "Validate Fang 2010 equation y = (2/E)(\u03c1\u00b7H)^0.7(6\u00d710\u207b\u2076)^(-0.7), coefficient exp() usage, and f(z,E) formula for 100 eV - 1 MeV range",
+              "doc": "tasks/docs/task-3.1.0.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-16T02:53:53.958409Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-16T03:29:29.688228Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-16T03:30:16.555445Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-16T03:34:56.161179Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-16T03:34:56.661021Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-16T04:11:48.206772Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-16T04:16:37.535479Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-16T04:18:22.482336Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-16T04:19:55.718477Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-16T04:22:39.728630Z"
+                }
+              ]
+            },
+            "1": {
+              "title": "Validate ionization rate calculation (calc_ionization.m)",
+              "status": "done",
+              "description": "Validate constant 0.035, q_tot formula Qe/0.035 \u00d7 f/H, integration direction, and cumulative sum logic",
+              "doc": "tasks/docs/task-3.1.1.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-16T04:35:45.234328Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-16T04:39:32.222248Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-16T04:40:15.702912Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-16T04:47:31.648713Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-16T04:47:32.085592Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-16T04:51:13.884485Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-16T04:52:59.998588Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-16T04:54:16.692075Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-16T04:59:44.128869Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-16T05:07:43.271604Z",
+                  "completions_confirmed": {
+                    "phase": {
+                      "id": "3.1",
+                      "title": "Phase 3.1: Fang 2010 Model Core Validation",
+                      "confirmed_at": "2026-01-16T05:07:43.271576Z"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "2": {
+          "title": "Phase 3.2: Bounce and Mirror Mechanics Validation",
+          "status": "done",
+          "description": "Validate magnetic dipole bounce period and mirror altitude calculations",
+          "doc": "tasks/docs/task-3.2.md",
+          "children": {
+            "0": {
+              "title": "Validate bounce period equation (bounce_time_arr.m)",
+              "status": "done",
+              "description": "Validate relativistic formula constants (mc2 values), L-shell dependency, dipole field assumptions, and numerical vs analytical solution",
+              "doc": "tasks/docs/task-3.2.0.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-16T06:12:47.919209Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-16T06:44:02.953306Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-16T06:45:23.460949Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-16T06:51:06.082681Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-16T06:51:06.555479Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-16T06:54:20.608053Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-16T06:57:34.213681Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-16T07:00:20.941628Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-16T07:03:28.457416Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-16T08:04:02.582839Z"
+                }
+              ]
+            },
+            "1": {
+              "title": "Validate mirror altitude calculation (dipole_mirror_altitude.m)",
+              "status": "done",
+              "description": "Validate magnetic field ratio B_ratio formula, r = L\u00b7R_E\u00b7cos\u00b2(\u03bb) relationship, and interpolation method accuracy",
+              "doc": "tasks/docs/task-3.2.1.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-16T08:05:03.105199Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-16T08:30:01.330379Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-16T08:31:00.279662Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-16T08:31:00.670995Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-16T08:38:03.850473Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-16T09:21:26.901364Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-16T09:24:39.302339Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-16T09:26:16.874234Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-16T09:36:55.645719Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-16T09:46:00.710103Z"
+                }
+              ]
+            }
+          }
+        },
+        "3": {
+          "title": "Phase 3.3: Atmospheric Data and MSIS Integration",
+          "status": "done",
+          "description": "Validate MSIS atmospheric data retrieval and integration with precipitation model",
+          "doc": "tasks/docs/task-3.3.md",
+          "children": {
+            "0": {
+              "title": "Validate MSIS data retrieval (get_msis_dat.m)",
+              "status": "done",
+              "description": "Validate F107 and Ap index usage vs MSIS documentation, altitude range validity (0-1000 km), and mass density/scale height units",
+              "doc": "tasks/docs/task-3.3.0.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-16T16:00:37.633545Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-16T16:10:55.032002Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-16T16:12:37.796219Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-16T16:12:37.888412Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-16T16:19:41.955104Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-16T16:26:50.311423Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-16T16:28:06.605208Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-16T16:30:41.240372Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-16T16:33:25.965706Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-16T16:40:55.860410Z"
+                }
+              ]
+            }
+          }
+        },
+        "4": {
+          "title": "Phase 3.4: Unit Consistency and Constants",
+          "status": "done",
+          "description": "Validate physical constants, unit conversions, and coordinate system definitions",
+          "doc": "tasks/docs/task-3.4.md",
+          "children": {
+            "0": {
+              "title": "Validate physical constants and unit conversions",
+              "status": "done",
+              "description": "Validate Earth radius (6371 km), bounce time constants (0.511 MeV e\u207b, 938 MeV p\u207a), energy unit conversions (keV vs MeV), and 6\u00d710\u207b\u2076 density constant",
+              "doc": "tasks/docs/task-3.4.0.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-16T17:24:57.786177Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-16T17:27:55.949008Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-16T17:29:34.308405Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-16T17:29:34.382081Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-16T17:35:45.286505Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-16T17:37:17.668561Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-16T17:38:29.605571Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-16T17:39:40.871102Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-16T17:42:00.803103Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-16T17:44:13.442824Z"
+                }
+              ]
+            },
+            "1": {
+              "title": "Validate coordinate systems and angular definitions",
+              "status": "done",
+              "description": "Validate equatorial pitch angle definition (0-90\u00b0 vs 90-180\u00b0 handling), L-shell definition (Earth radii), and mirror latitude relationship",
+              "doc": "tasks/docs/task-3.4.1.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-16T18:00:19.325746Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-16T18:03:33.776877Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-16T18:04:21.509218Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-16T18:04:21.833989Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-16T18:10:47.639270Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-16T18:22:40.012832Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-16T18:23:37.053692Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-16T18:26:06.011450Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-16T18:27:36.556644Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-16T18:29:20.994447Z"
+                }
+              ]
+            }
+          }
+        },
+        "5": {
+          "title": "Phase 3.5: Integration Logic and Edge Cases",
+          "status": "done",
+          "description": "Validate precipitation loss calculation, numerical methods, and edge case handling",
+          "doc": "tasks/docs/task-3.5.md",
+          "children": {
+            "0": {
+              "title": "Validate precipitation loss calculation (fang10_precip.m)",
+              "status": "done",
+              "description": "Validate loss factor q_to_mirror/q_top, time evolution dQe/dt = 2\u00b7Qe_loss/t_b, boundary conditions (mirror altitude > 1000km, < 0km, NaN), and energy range enforcement",
+              "doc": "tasks/docs/task-3.5.0.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-16T18:30:35.219000Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-16T18:34:33.384852Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-16T18:35:29.394740Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-16T18:35:29.502249Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-16T18:41:10.162264Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-16T18:43:08.325241Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-16T18:45:31.432172Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-16T18:47:00.760668Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-16T18:50:04.117936Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-16T18:52:41.024314Z"
+                }
+              ]
+            },
+            "1": {
+              "title": "Validate numerical methods and stability",
+              "status": "done",
+              "description": "Validate trapezoidal integration for q_cum, interpolation accuracy for mirror altitude lookup, time stepping stability (dt handling), and negative value enforcement",
+              "doc": "tasks/docs/task-3.5.1.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-16T19:09:01.305325Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-16T19:11:56.104078Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-16T19:12:23.997347Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-16T19:12:24.083494Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-16T22:16:22.271404Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-16T22:23:22.392941Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-16T22:24:33.687765Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-16T22:25:02.502003Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-16T22:26:37.466662Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-16T22:30:02.536446Z"
+                }
+              ]
+            }
+          }
+        },
+        "6": {
+          "title": "Phase 3.6: Cross-Component Validation",
+          "status": "done",
+          "description": "Validate consistency across energy/flux calculations and atmospheric boundary integration",
+          "doc": "tasks/docs/task-3.6.md",
+          "children": {
+            "0": {
+              "title": "Validate energy and flux consistency",
+              "status": "done",
+              "description": "Validate incident energy flux Qe = j\u00b7E (units and sign), energy dissipation f(z,E) vs ionization q_tot connection, and cumulative vs local ionization rate definitions",
+              "doc": "tasks/docs/task-3.6.0.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-16T20:02:31.495734Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-16T20:04:21.161539Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-16T20:05:29.242226Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-16T20:06:18.796199Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-16T21:03:39.585919Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-16T21:04:44.867640Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-16T21:06:09.414144Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-16T21:06:58.686256Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-16T21:09:28.196650Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-16T21:12:28.519349Z"
+                }
+              ]
+            },
+            "1": {
+              "title": "Validate atmospheric boundary integration",
+              "status": "done",
+              "description": "Validate integration from top of atmosphere downward, mirror altitude as lower integration bound, and physical interpretation of cumulative ionization",
+              "doc": "tasks/docs/task-3.6.1.md",
+              "children": {},
+              "state_history": [
+                {
+                  "state": "reviewing-plan-architecture",
+                  "entered_at": "2026-01-16T21:46:01.578368Z"
+                },
+                {
+                  "state": "reviewing-plan-scope",
+                  "entered_at": "2026-01-16T21:49:32.805407Z"
+                },
+                {
+                  "state": "reviewing-prompt",
+                  "entered_at": "2026-01-16T21:50:23.154523Z"
+                },
+                {
+                  "state": "implementing",
+                  "entered_at": "2026-01-16T21:51:25.558137Z"
+                },
+                {
+                  "state": "reviewing-code",
+                  "entered_at": "2026-01-16T22:30:45.619816Z"
+                },
+                {
+                  "state": "reviewing-quality",
+                  "entered_at": "2026-01-16T22:34:02.983578Z"
+                },
+                {
+                  "state": "testing",
+                  "entered_at": "2026-01-16T22:35:23.033797Z"
+                },
+                {
+                  "state": "verifying",
+                  "entered_at": "2026-01-16T22:35:53.509226Z"
+                },
+                {
+                  "state": "validating",
+                  "entered_at": "2026-01-16T22:36:09.008490Z"
+                },
+                {
+                  "state": "done",
+                  "entered_at": "2026-01-16T22:39:19.174826Z"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

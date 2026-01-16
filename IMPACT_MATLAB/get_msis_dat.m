@@ -144,8 +144,13 @@ function [rho_out,H_out] = get_msis_dat(alt,f107a,f107,Ap, compile_msis)
     nAr    = data{14}; % Ar number density (cm-3)
     rho   = data{15}; % Total mass density (g cm-3)
     nH     = data{16}; % H number density (cm-3)
-%   nN     = data{17}; % N number density (cm-3)
-    nOa    = data{18}; % Anomalous oxygen number density (cm-3)
+    %   nN     = data{17}; % N number density (cm-3) [EXCLUDED - negligible]
+    nOa    = data{18}; % Anomalous oxygen (O*) number density (cm-3)
+    % Note: O* (anomalous oxygen) represents energetic oxygen atoms in the exosphere
+    % that have sufficient thermal energy to escape Earth's gravitational bound.
+    % This is distinct from ground-state atomic oxygen (nO, column 11). The Fang et
+    % model requires O* for electron impact ionization calculations involving hot
+    % oxygen populations. Mass = 16 AMU (same as regular O).
     nNO    = data{19}; % NO number density (cm-3)
     T     = data{20}; % Temperature at altitude (K)
     
@@ -153,7 +158,12 @@ function [rho_out,H_out] = get_msis_dat(alt,f107a,f107,Ap, compile_msis)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %calculate scale height and number density for output
 
-    % calculate average molecular weight in kg
+    % Calculate average molecular weight in kg
+    % Note: N (atomic nitrogen) is excluded from the mean molecular mass calculation
+    % because nN < 1e8 cm^-3 at thermospheric altitudes (negligible compared to
+    % major species like O and N2 which are >1e10 cm^-3), contributing <0.1% to
+    % the total mass density. Including N would require an additional column parse
+    % (column 17) without meaningful impact on results.
     Mav = 1.66e-27*(nHe*4.0 + nO*16.0 + nN2*28.02 + nO2*32.0 + nAr*39.95 + nH*1.0 ...
         + nOa*16.0 + nNO*30)./ (nHe + nO + nN2 + nO2 + nAr + nH +nOa + nNO); 
     

@@ -1,0 +1,481 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\geometry{margin=1in}
+
+\title{Reference Equations Catalog for IMPACT Precipitation Code Validation}
+\author{IMPACT Project Literature Collection Task 3.0.0}
+\date{January 16, 2026}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%==============================================================================%
+% SECTION 1: ENERGY DISSIPATION PARAMETERIZATION (FANG 2010)
+%==============================================================================%
+\section{Energy Dissipation Parameterization (Fang et al. 2010)}
+
+\subsection{Normalized Atmospheric Column Mass}
+
+From Fang et al. (2010), Equation (1):
+
+\begin{equation}
+	y = \frac{2}{E_{\text{mono}}} (\rho H)^{0.7} \left(6 \times 10^{-6}\right)^{-0.7}
+	\tag{1}
+\end{equation}
+
+where:
+\begin{itemize}
+	\item $y$ = normalized atmospheric column mass (dimensionless)
+	\item $E_{\text{mono}}$ = incident monoenergetic electron energy (keV)
+	\item $\rho$ = atmospheric mass density (g cm$^{-3}$)
+	\item $H$ = atmospheric scale height (cm)
+	\item $6 \times 10^{-6}$ = reference density for normalization (g cm$^{-3}$)
+	\item $0.7$ = empirical exponent from curve fitting
+\end{itemize}
+
+\textbf{Validity Range:} $100 \text{ eV} \leq E_{\text{mono}} \leq 1 \text{ MeV}$
+
+\textbf{Units:} $E_{\text{mono}}$ in keV, $\rho$ in g cm$^{-3}$, $H$ in cm
+
+\textbf{Physical Interpretation:} This equation normalizes the atmospheric column mass to account for the energy-dependent penetration depth of precipitating electrons. Higher energy electrons penetrate deeper, and this normalization allows a unified parameterization across the full energy range.
+
+\textbf{Source:} Fang et al. (2010), \textit{Geophysical Research Letters}, 37, L22106, doi:10.1029/2010GL045406, Equation (1), Page L22106-2
+
+\textbf{Implementation Location:} IMPACT\_MATLAB/calc\_Edissipation.m, line 33
+
+\bigskip
+
+\subsection{Energy Dissipation Rate}
+
+From Fang et al. (2010), Equation (4):
+
+\begin{equation}
+	f(y) = C_1 y^{C_2} \exp\left(-C_3 y^{C_4}\right) + C_5 y^{C_6} \exp\left(-C_7 y^{C_8}\right)
+	\tag{2}
+\end{equation}
+
+where:
+\begin{itemize}
+	\item $f$ = normalized energy dissipation rate (dimensionless)
+	\item $y$ = normalized atmospheric column mass from Equation (1)
+	\item $C_i$ ($i=1,\dots,8$) = energy-dependent coefficients
+\end{itemize}
+
+\textbf{Physical Interpretation:} The double exponential form captures the characteristic energy deposition profile, with the first term representing the primary ionization peak and the second term accounting for secondary ionization processes. The coefficients $C_i$ are determined by the electron energy.
+
+\textbf{Source:} Fang et al. (2010), \textit{Geophysical Research Letters}, 37, L22106, doi:10.1029/2010GL045406, Equation (4), Page L22106-3
+
+\bigskip
+
+\subsection{Coefficient Energy Dependence}
+
+From Fang et al. (2010), Equation (5):
+
+\begin{equation}
+	C_i(E) = \exp\left( \sum_{j=0}^{3} P_{ij} \left[\ln(E)\right]^j \right)
+	\tag{3}
+\end{equation}
+
+where:
+\begin{itemize}
+	\item $C_i$ = coefficient for energy dissipation parameterization ($i=1,\dots,8$)
+	\item $E$ = electron energy (keV)
+	\item $P_{ij}$ = polynomial coefficients from Table \ref{tab:pij_coefficients}
+	\item $\ln(E)$ = natural logarithm of energy
+\end{itemize}
+
+\textbf{Implementation Location:} IMPACT\_MATLAB/calc\_Edissipation.m, lines 35-43
+
+\bigskip
+
+\subsection{Pij Polynomial Coefficients}
+
+From Fang et al. (2010), Table 1:
+
+\begin{table}[htbp]
+	\centering
+	\caption{Parameterization Coefficients $P_{ij}$ for Isotropically Incident Monoenergetic 100 eV to 1 MeV Electrons}
+	\label{tab:pij_coefficients}
+	\begin{tabular}{@{}ccccc@{}}
+		\toprule
+		$i \backslash j$ & $j=0$     & $j=1$                     & $j=2$                    & $j=3$       \\
+		\midrule
+		1                & 1.24616   & 1.45903                   & -0.242269                & 0.0595459   \\
+		2                & 2.23976   & -4.22918$\times$10$^{-7}$ & 0.0136458                & 0.00253332  \\
+		3                & 1.41754   & 0.144597                  & 0.0170433                & 0.000639717 \\
+		4                & 0.248775  & -0.150890                 & 6.30894$\times$10$^{-9}$ & 0.00123707  \\
+		5                & -0.465119 & -0.105081                 & -0.0895701               & 0.0122450   \\
+		6                & 0.386019  & 0.00175430                & -0.000742960             & 0.000460881 \\
+		7                & -0.645454 & 0.000849555               & -0.0428502               & -0.00299302 \\
+		8                & 0.948930  & 0.197385                  & -0.00250603              & -0.00206938 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\textbf{Storage Location:} IMPACT\_MATLAB/coeff\_fang10.mat (MATLAB binary file)
+
+\textbf{Implementation Location:} IMPACT\_MATLAB/sav\_fang10\_coeff.m
+
+\textbf{Source:} Fang et al. (2010), \textit{Geophysical Research Letters}, 37, L22106, doi:10.1029/2010GL045406, Table 1, Page L22106-4
+
+%==============================================================================%
+% SECTION 2: IONIZATION RATE FORMULA (FANG 2010)
+%==============================================================================%
+\section{Ionization Rate Formula (Fang et al. 2010)}
+
+\subsection{Total Ionization Rate}
+
+From Fang et al. (2010), Equation (2) and surrounding text:
+
+\begin{equation}
+	q_{\text{tot}} = \frac{Q_{\text{mono}} f}{D^* H}
+	\tag{4}
+\end{equation}
+
+where:
+\begin{itemize}
+	\item $q_{\text{tot}}$ = total ionization production rate (cm$^{-3}$ s$^{-1}$)
+	\item $Q_{\text{mono}}$ = incident monoenergetic electron energy flux (keV cm$^{-2}$ s$^{-1}$)
+	\item $f$ = normalized energy dissipation rate from Equation (2)
+	\item $D^*$ = mean energy loss per ion pair = 0.035 keV (35 eV)
+	\item $H$ = atmospheric scale height (cm)
+\end{itemize}
+
+\textbf{Units:} $Q_{\text{mono}}$ in keV cm$^{-2}$ s$^{-1}$, $H$ in cm, $q_{\text{tot}}$ in cm$^{-3}$ s$^{-1}$
+
+\textbf{Physical Interpretation:} This equation converts the energy dissipation profile into actual ionization rates by dividing by the mean energy required to produce one ion-electron pair. The 35 eV value is a well-established "rule of thumb" for high-energy electrons in Earth's atmosphere.
+
+\textbf{Source:} Fang et al. (2010), \textit{Geophysical Research Letters}, 37, L22106, doi:10.1029/2010GL045406, Section 2, Page L22106-2
+
+\textbf{Critical Note:} The constant $D^* = 0.035$ keV is derived from laboratory measurements (Rees 1989) and represents the "mean energy loss per ion pair production." However, Fang et al. (2010) note that this value "is accurate for precipitating high-energy electrons but not for low-energy particles."
+
+\textbf{Implementation Location:} IMPACT\_MATLAB/calc\_ionization.m, line 35
+
+\bigskip
+
+\subsection{Ionization Constant Source}
+
+The constant 0.035 keV (35 eV) has the following provenance:
+
+\begin{equation}
+	D^* = 35 \text{ eV/ion pair} = 0.035 \text{ keV/ion pair}
+	\tag{5}
+\end{equation}
+
+\textbf{Literature Source:} Rees, M. H. (1989), \textit{Physics and Chemistry of the Upper Atmosphere}, Cambridge University Press, Cambridge.
+
+\textbf{Validation:} Laboratory measurements of electron ionization efficiency in atmospheric gases.
+
+\textbf{Type:} \textbf{Physical constant} - This represents a fundamental ionization efficiency for high-energy electrons in Earth's atmosphere.
+
+%==============================================================================%
+% SECTION 3: BOUNCE PERIOD FORMULA
+%==============================================================================%
+\section{Bounce Period Formula (Dipole Field Theory)}
+
+\subsection{Relativistic Bounce Period}
+
+From standard magnetospheric physics (Roederer 1970; Schulz and Lanzerotti 1974):
+
+\begin{equation}
+	T_b = 4 \frac{R_E}{c} \frac{L}{\gamma \beta} \int_0^{\alpha_{\text{eq}}} \frac{\cos\alpha \, d\alpha}{\sqrt{1 - \frac{B_{\text{eq}}}{B_m(\alpha)} \sin^2\alpha}}
+	\tag{6}
+\end{equation}
+
+where:
+\begin{itemize}
+	\item $T_b$ = bounce period (seconds)
+	\item $R_E$ = Earth radius = $6.371 \times 10^6$ m
+	\item $c$ = speed of light = $2.998 \times 10^8$ m/s
+	\item $L$ = magnetic shell parameter
+	\item $\gamma$ = Lorentz factor = $(1 - \beta^2)^{-1/2}$
+	\item $\beta$ = $v/c$ (ratio of particle speed to speed of light)
+	\item $\alpha_{\text{eq}}$ = equatorial pitch angle
+	\item $B_{\text{eq}}$ = equatorial magnetic field strength
+	\item $B_m(\alpha)$ = magnetic field strength at mirror point for pitch angle $\alpha$
+\end{itemize}
+
+\textbf{Physical Interpretation:} This exact formula gives the complete relativistic bounce period for a charged particle trapped in Earth's dipole magnetic field. The integral accounts for the variation of magnetic field strength along the particle's bounce trajectory.
+
+\textbf{Source:} Roederer, J. G. (1970), \textit{Dynamics of Geomagnetically Trapped Radiation}, Springer-Verlag, Berlin.
+
+\bigskip
+
+\subsection{Momentum Calculation}
+
+From bounce\_time\_arr.m, line 38:
+
+\begin{equation}
+	pc = \sqrt{\left(\frac{E}{m c^2} + 1\right)^2 - 1} \cdot m c^2
+	\tag{7}
+\end{equation}
+
+where:
+\begin{itemize}
+	\item $pc$ = momentum times speed of light (MeV)
+	\item $E$ = kinetic energy (MeV)
+	\item $m c^2$ = rest mass energy (0.511 MeV for electrons, 938 MeV for protons)
+\end{itemize}
+
+\textbf{Units:} $E$ in MeV, $pc$ in MeV
+
+\bigskip
+
+\subsection{T\_pa Polynomial Approximation}
+
+From bounce\_time\_arr.m, lines 46-47:
+
+\begin{equation}
+	T_{\text{pa}} = 1.38 + 0.055 \sin^{1/3}\alpha - 0.32 \sin^{1/2}\alpha - 0.037 \sin^{2/3}\alpha - 0.394 \sin\alpha + 0.056 \sin^{4/3}\alpha
+	\tag{8}
+\end{equation}
+
+where:
+\begin{itemize}
+	\item $T_{\text{pa}}$ = pitch angle scaling factor for bounce period (dimensionless)
+	\item $\alpha$ = equatorial pitch angle (radians)
+\end{itemize}
+
+\textbf{Coefficients:}
+\begin{center}
+	\begin{tabular}{ccc}
+		\hline
+		Term     & Coefficient & Power of $\sin(\alpha)$ \\
+		\hline
+		Constant & 1.38        & $\sin^0(\alpha)$        \\
+		Term 1   & 0.055       & $\sin^{1/3}(\alpha)$    \\
+		Term 2   & -0.32       & $\sin^{1/2}(\alpha)$    \\
+		Term 3   & -0.037      & $\sin^{2/3}(\alpha)$    \\
+		Term 4   & -0.394      & $\sin^1(\alpha)$        \\
+		Term 5   & 0.056       & $\sin^{4/3}(\alpha)$    \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\textbf{Physical Interpretation:} This polynomial approximation provides a computationally efficient way to evaluate the pitch angle dependence of the bounce period integral. The exact integral in Equation (6) can be approximated by $T_b \propto T_{\text{pa}}(\alpha_{\text{eq}})$.
+
+\textbf{Critical Open Question:} The specific coefficients (1.38, 0.055, -0.32, -0.037, -0.394, 0.056) have not been definitively traced to a primary literature source. While the polynomial form is consistent with standard dipole theory (Roederer 1970), the exact coefficients require further investigation.
+
+\textbf{Type:} \textbf{Empirical/Algorithmic} - Numerical approximation to the exact bounce period integral.
+
+\textbf{Implementation Location:} IMPACT\_MATLAB/bounce\_time\_arr.m, lines 46-47
+
+\bigskip
+
+\subsection{Complete Bounce Period Calculation}
+
+From bounce\_time\_arr.m, line 50:
+
+\begin{equation}
+	T_b = 4 L R_E \frac{m c^2}{pc} \frac{T_{\text{pa}}}{c} \frac{1}{86400}
+	\tag{9}
+\end{equation}
+
+where:
+\begin{itemize}
+	\item $T_b$ = bounce period in days (final output units)
+	\item All other terms as defined above
+	\item Factor of 86400 converts seconds to days
+\end{itemize}
+
+\textbf{Alternative Formulation:} The code actually outputs in days, but the fundamental bounce period formula can be expressed as:
+
+\begin{equation}
+	T_b (\text{seconds}) = 4 L R_E \frac{m c^2}{pc} T_{\text{pa}} \frac{1}{c}
+	\tag{10}
+\end{equation}
+
+\textbf{Implementation Location:} IMPACT\_MATLAB/bounce\_time\_arr.m, line 50
+
+\bigskip
+
+\subsection{Particle Mass Dependence}
+
+The bounce period depends on particle rest mass through the momentum calculation:
+
+\begin{equation}
+	m_e c^2 = 0.511 \text{ MeV (electrons)}, \quad m_p c^2 = 938.272 \text{ MeV (protons)}
+	\tag{11}
+\end{equation}
+
+\textbf{Implementation Location:} IMPACT\_MATLAB/bounce\_time\_arr.m, lines 26-28
+
+%==============================================================================%
+% SECTION 4: MIRROR ALTITUDE FORMULA
+%==============================================================================%
+\section{Mirror Altitude Formula (Dipole Field)}
+
+\subsection{Dipole Magnetic Field Ratio}
+
+From dipole\_mirror\_altitude.m, line 14:
+
+\begin{equation}
+	\frac{B}{B_{\text{eq}}} = \frac{\cos^6\lambda}{\sqrt{1 + 3\sin^2\lambda}}
+	\tag{12}
+\end{equation}
+
+where:
+\begin{itemize}
+	\item $B$ = magnetic field strength at latitude $\lambda$
+	\item $B_{\text{eq}}$ = equatorial magnetic field strength
+	\item $\lambda$ = magnetic latitude (radians)
+\end{itemize}
+
+\textbf{Physical Interpretation:} This equation describes how the magnetic field strength varies with latitude in an ideal dipole field. The field is strongest at the poles and weakest at the equator.
+
+\textbf{Source:} Standard dipole field theory, e.g., Roederer (1970), \textit{Dynamics of Geomagnetically Trapped Radiation}, Springer-Verlag, Berlin.
+
+\textbf{Implementation Location:} IMPACT\_MATLAB/dipole\_mirror\_altitude.m, line 14
+
+\bigskip
+
+\subsection{Mirror Point Altitude}
+
+From dipole\_mirror\_altitude.m, line 27:
+
+\begin{equation}
+	r = L R_E \cos^2\lambda
+	\tag{13}
+\end{equation}
+
+where:
+\begin{itemize}
+	\item $r$ = radial distance from Earth's center (km)
+	\item $L$ = magnetic shell parameter
+	\item $R_E$ = Earth radius = 6371 km
+	\item $\lambda$ = magnetic latitude (radians)
+\end{itemize}
+
+\textbf{Resulting Altitude:}
+
+\begin{equation}
+	h = r - R_E = L R_E \cos^2\lambda - R_E
+	\tag{14}
+\end{equation}
+
+where $h$ is altitude above Earth's surface (km).
+
+\textbf{Physical Interpretation:} This equation gives the radial position of a magnetic field line at a given latitude. Particles with a specific equatorial pitch angle will mirror at the latitude where the magnetic field strength equals their mirror field strength.
+
+\textbf{Implementation Location:} IMPACT\_MATLAB/dipole\_mirror\_altitude.m, line 27
+
+\bigskip
+
+\subsection{Loss Cone Angle}
+
+From loss cone theory:
+
+\begin{equation}
+	\sin^2\alpha_{\text{LC}} = \frac{B_{\text{eq}}}{B_m}
+	\tag{15}
+\end{equation}
+
+where:
+\begin{itemize}
+	\item $\alpha_{\text{LC}}$ = loss cone angle at the equator
+	\item $B_{\text{eq}}$ = equatorial magnetic field strength
+	\item $B_m$ = magnetic field strength at the mirror point
+\end{itemize}
+
+\textbf{Physical Interpretation:} Particles with equatorial pitch angles less than $\alpha_{\text{LC}}$ will have mirror points below the atmosphere and will be lost through atmospheric collisions. Typical loss cone angles are 5-10 degrees depending on L-shell.
+
+\textbf{Atmospheric Boundary:} Precipitation occurs when mirror altitude < 1000 km.
+
+\textbf{Source:} Roederer, J. G. (1970), \textit{Dynamics of Geomagnetically Trapped Radiation}, Springer-Verlag, Berlin.
+
+%==============================================================================%
+% SECTION 5: SUMMARY OF CRITICAL CONSTANTS
+%==============================================================================%
+\section{Summary of Critical Constants}
+
+\begin{table}[htbp]
+	\centering
+	\caption{Constant Traceability Matrix for IMPACT Precipitation Code}
+	\label{tab:constants}
+	\begin{tabular}{@{}lllccl@{}}
+		\toprule
+		Constant            & Value                          & Code Location           & Literature Source     & Equation                         & Type                  \\
+		\midrule
+		$D^*$               & 0.035 keV                      & calc\_ionization.m:35   & Rees (1989)           & (4)                              & Physical              \\
+		$\rho_{\text{ref}}$ & $6 \times 10^{-6}$ g cm$^{-3}$ & calc\_Edissipation.m:33 & Fang et al. (2010)    & (1)                              & Normalization         \\
+		Exponent            & 0.7                            & calc\_Edissipation.m:33 & Fang et al. (2010)    & (1)                              & Empirical             \\
+		$P_{11}$            & 1.24616                        & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{12}$            & 1.45903                        & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{13}$            & -0.242269                      & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{14}$            & 0.0595459                      & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{21}$            & 2.23976                        & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{22}$            & -4.22918$\times$10$^{-7}$      & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{23}$            & 0.0136458                      & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{24}$            & 0.00253332                     & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{31}$            & 1.41754                        & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{32}$            & 0.144597                       & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{33}$            & 0.0170433                      & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{34}$            & 0.000639717                    & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{41}$            & 0.248775                       & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{42}$            & -0.150890                      & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{43}$            & 6.30894$\times$10$^{-9}$       & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{44}$            & 0.00123707                     & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{51}$            & -0.465119                      & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{52}$            & -0.105081                      & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{53}$            & -0.0895701                     & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{54}$            & 0.0122450                      & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{61}$            & 0.386019                       & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{62}$            & 0.00175430                     & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{63}$            & -0.000742960                   & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{64}$            & 0.000460881                    & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{71}$            & -0.645454                      & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{72}$            & 0.000849555                    & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{73}$            & -0.0428502                     & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{74}$            & -0.00299302                    & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{81}$            & 0.948930                       & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{82}$            & 0.197385                       & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{83}$            & -0.00250603                    & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$P_{84}$            & -0.00206938                    & coeff\_fang10.mat       & Fang et al. (2010)    & Table \ref{tab:pij_coefficients} & Empirical             \\
+		$T_{\text{pa},0}$   & 1.38                           & bounce\_time\_arr.m:46  & \textit{UNIDENTIFIED} & (8)                              & Empirical/Algorithmic \\
+		$T_{\text{pa},1}$   & 0.055                          & bounce\_time\_arr.m:46  & \textit{UNIDENTIFIED} & (8)                              & Empirical/Algorithmic \\
+		$T_{\text{pa},2}$   & -0.32                          & bounce\_time\_arr.m:46  & \textit{UNIDENTIFIED} & (8)                              & Empirical/Algorithmic \\
+		$T_{\text{pa},3}$   & -0.037                         & bounce\_time\_arr.m:46  & \textit{UNIDENTIFIED} & (8)                              & Empirical/Algorithmic \\
+		$T_{\text{pa},4}$   & -0.394                         & bounce\_time\_arr.m:46  & \textit{UNIDENTIFIED} & (8)                              & Empirical/Algorithmic \\
+		$T_{\text{pa},5}$   & 0.056                          & bounce\_time\_arr.m:46  & \textit{UNIDENTIFIED} & (8)                              & Empirical/Algorithmic \\
+		$m_e c^2$           & 0.511 MeV                      & bounce\_time\_arr.m:26  & Physical constant     & (7)                              & Physical              \\
+		$m_p c^2$           & 938 MeV                        & bounce\_time\_arr.m:28  & Physical constant     & (7)                              & Physical              \\
+		$R_E$               & 6371 km                        & bounce\_time\_arr.m:41  & Physical constant     & (9)                              & Physical              \\
+		$c$                 & $2.998 \times 10^8$ m/s        & bounce\_time\_arr.m:42  & Physical constant     & (6)                              & Physical              \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\textbf{Type Classification:}
+\begin{itemize}
+	\item \textbf{Physical}: Fundamental physical constant with units
+	\item \textbf{Empirical}: Fitted parameter from experimental/observational data
+	\item \textbf{Normalization}: Scaling factor for dimensionless parameterization
+	\item \textbf{Algorithmic}: Numerical approximation or computational choice
+\end{itemize}
+
+%==============================================================================%
+% REFERENCES
+%==============================================================================%
+\section{References}
+
+\begin{itemize}
+	\item Fang, X., C. E. Randall, D. Lummerzheim, W. Wang, G. Lu, S. C. Solomon, and R. A. Frahm (2010), Parameterization of monoenergetic electron impact ionization, \textit{Geophysical Research Letters}, 37, L22106, doi:10.1029/2010GL045406.
+
+	\item Fang, X., C. E. Randall, D. Lummerzheim, S. C. Solomon, M. J. Mills, D. R. Marsh, C. H. Jackman, W. Wang, and G. Lu (2008), Electron impact ionization: A new parameterization for 100 eV to 1 MeV electrons, \textit{Journal of Geophysical Research}, 113, A09302, doi:10.1029/2008JA013384.
+
+	\item Rees, M. H. (1989), \textit{Physics and Chemistry of the Upper Atmosphere}, Cambridge University Press, Cambridge.
+
+	\item Roederer, J. G. (1970), \textit{Dynamics of Geomagnetically Trapped Radiation}, Springer-Verlag, Berlin.
+
+	\item Schulz, M., and L. J. Lanzerotti (1974), \textit{Particle Diffusion in the Radiation Belts}, Springer-Verlag, Berlin.
+\end{itemize}
+
+\end{document}

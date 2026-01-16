@@ -1,0 +1,22 @@
+PRECIPITATION LOSS MODEL VALIDATION SUMMARY
+============================================================
+
+Test Date: 2026-01-16
+Validated: fang10_precip.m
+Validation Tier: Four-Tier Strategy
+
+RESULTS:
+  Total tests: 11
+  Passed: 9
+  Failed: 2
+  Success rate: 81.8%
+
+❌ SOME TESTS FAILED
+Review the failed tests and their details below.
+
+
+FAILED: Boundary Physical Cases
+  Message: Boundary physical cases: ✗ FAILED
+
+FAILED: Loss Cone Physics
+  Message: Loss cone altitude = 1198.0 km vs expected 1000 km

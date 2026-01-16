@@ -1,0 +1,15 @@
+{
+  "language": "fortran",
+  "project": "IMPACT",
+  "description": "Atmospheric model analysis tools",
+  "quality_commands": [
+    "find . -name '*.f90' -exec gfortran -fsyntax-only {} \\;",
+    "find . -name '*.m' -exec matlab -batch \"addpath('$(dirname {})'); syntaxcheck('$(basename {})')\" \\;",
+    "shellcheck *.sh"
+  ],
+  "baselines": {},
+  "components": [
+    "nrlmsis2.1",
+    "IMPACT_MATLAB"
+  ]
+}

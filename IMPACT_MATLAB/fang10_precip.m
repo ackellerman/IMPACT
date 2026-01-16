@@ -56,7 +56,7 @@ mirr_alt = dipole_mirror_altitude(pa,Lshell);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %loop over time to calculate and apply loss rates to Qe:
 
-for  t=1:10%length(time)-1
+for t=1:length(time)-1%length(time)-1
 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,13 +122,7 @@ for  t=1:10%length(time)-1
     %check if Qe becomes negative and set to zero
     Qe(Qe<0) = 0;
 
-    semilogy(pa, Qe(t,:,50))
-
-    hold on
-
 end
-
- hold off
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %% test ionization profiles %%

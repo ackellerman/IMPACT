@@ -29,6 +29,12 @@ function [f] = calc_Edissipation(rho,H,E)
     f=nan(length(rho),length(E));
 
     for eidx=1:length(E)
+        
+        % Validate energy range (100 eV - 1 MeV)
+        if E(eidx) < 0.1 || E(eidx) > 1000
+            warning('calc_Edissipation:EnergyRange', ...
+                'Energy %.2f keV outside valid range [0.1, 1000] keV. Results may be unreliable.', E(eidx));
+        end
 
         y = (2./E(eidx)) * (rho .* H).^ 0.7 * (6e-6)^-0.7; %column mass as function of altitude
     

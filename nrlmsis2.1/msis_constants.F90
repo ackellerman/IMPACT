@@ -1,6 +1,6 @@
 !#######################################################################
-! MSIS® (NRL-SOF-014-1) SOFTWARE
-! NRLMSIS® empirical atmospheric model software. Use is governed by the
+! MSISï¿½ (NRL-SOF-014-1) SOFTWARE
+! NRLMSISï¿½ empirical atmospheric model software. Use is governed by the
 ! Open Source Academic Research License Agreement contained in the file
 ! nrlmsis2.1_license.txt, which is part of this software package. BY
 ! USING OR MODIFYING THIS SOFTWARE, YOU ARE AGREEING TO THE TERMS AND
@@ -38,7 +38,7 @@ module msis_constants
   real(kind=rp), parameter   :: tanh1 = tanh(1.0_rp)
 
   ! Thermodynamic constants
-  ! Boltzmann constant (CODATA 2018) (J/kg)
+  ! Boltzmann constant (CODATA 2018) (J/K)
   real(kind=rp), parameter   :: kB = 1.380649e-23_rp
   ! Avogadro constant (CODATA 2018)
   real(kind=rp), parameter   :: NA = 6.02214076e23_rp
@@ -79,7 +79,7 @@ module msis_constants
   ! CODATA Internationally recommended 2018 values of the fundamental physical constants.
   !   https://pml.nist.gov/cuu/Constants/; https://pml.nist.gov/cuu/pdf/wallet_2018.pdf
   ! Picard, A., Davis, R. S., Glaeser, M., and Fujii, K. (2007). Revised formula for the density of
-  !   air (CIPM 2007). Metrologia 45, 149–155. doi:10.1088/0026-1394/45/2/004
+  !   air (CIPM 2007). Metrologia 45, 149ï¿½155. doi:10.1088/0026-1394/45/2/004
   ! World Meteorological Organization (2014). WMO guide to meteorological instruments and methods of observation
   !   (the CIMO Guide). Part I, Chapter 12. https://www.wmo.int/pages/prog/www/IMOP/CIMO-Guide.html
 

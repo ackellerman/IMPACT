@@ -10,13 +10,17 @@ Based on git history analysis from the initial commit (`cca4282`) to Milestone 3
 
 ## 🔧 CRITICAL BUGS FIXED
 
-### 1. **Negative Mirror Altitude Bug** (HIGH PRIORITY)
-- **Location**: `dipole_mirror_altitude.m` - Created new function
-- **Issue**: Original code produced negative mirror altitudes for some pitch angles
-- **Root Cause**: Incorrect mathematical formulation in earlier version
-- **Fix**: Complete rewrite of dipole mirror altitude calculation
-- **Impact**: **770% error** in mirror altitude calculations fixed
-- **Status**: ✅ **FIXED** - New implementation validated with comprehensive tests
+### 1. **Mirror Altitude Bug** (770% error in OLD file)
+- **Location**: `mirror_altitude.m` (old file, DO NOT USE)
+- **Issue**: Uses incorrect approximation formula:
+  - Buggy: `r = L * R_E * (1/sin²α)^(1/6)`
+  - Correct: Solve dipole equations `sin²(α_eq) = cos⁶(λ)/√(1+3sin²(λ))`
+- **Impact**: Up to **770% error** at L=6, α=15°
+  - Buggy value: 53,611 km
+  - Correct value: 11,803 km
+- **Status**: ✅ **FIXED** - New file `dipole_mirror_altitude.m` implements correct solution
+- **Recommendation**: Use `dipole_mirror_altitude.m`, not `mirror_altitude.m`
+- **Validation**: 5/5 tests pass for dipole_mirror_altitude.m
 
 **Evidence from git history**:
 ```bash
@@ -317,10 +321,13 @@ tasks/
 
 ## 🚨 KNOWN ISSUES & LIMITATIONS
 
-### 1. **Critical Bug Discovered** (Documented)
-- **Issue**: `mirror_altitude.m` had critical physics bug (770% error)
-- **Status**: Documented with warnings in validation reports
-- **Recommendation**: Do not use for production calculations until fixed
+### 1. **mirror_altitude.m (DO NOT USE)**
+- **Issue**: Old file `mirror_altitude.m` has 770% error at small pitch angles
+- **Status**: ✅ **FIXED** - New file `dipole_mirror_altitude.m` implements correct solution
+- **Recommendation**: Use `dipole_mirror_altitude.m` instead (5/5 tests pass)
+- **Files**: 
+  - ✅ `dipole_mirror_altitude.m` (CORRECT - use this)
+  - ❌ `mirror_altitude.m` (BUGGY - kept for reference only)
 
 ### 2. **Untraced Coefficients**
 - **Issue**: T_pa coefficients in `bounce_time_arr.m` not traced to literature

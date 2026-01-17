@@ -321,13 +321,12 @@ tasks/
 
 ## 🚨 KNOWN ISSUES & LIMITATIONS
 
-### 1. **mirror_altitude.m (DO NOT USE)**
-- **Issue**: Old file `mirror_altitude.m` has 770% error at small pitch angles
-- **Status**: ✅ **FIXED** - New file `dipole_mirror_altitude.m` implements correct solution
-- **Recommendation**: Use `dipole_mirror_altitude.m` instead (5/5 tests pass)
-- **Files**: 
-  - ✅ `dipole_mirror_altitude.m` (CORRECT - use this)
-  - ❌ `mirror_altitude.m` (BUGGY - kept for reference only)
+### 1. **mirror_altitude.m (DELETED)**
+- **Issue**: Old file had 770% error at small pitch angles
+- **Status**: ✅ **FIXED and DELETED**
+- **Replacement**: `dipole_mirror_altitude.m` implements correct solution
+- **Validation**: 5/5 tests pass for the new file
+- **Action**: Use `dipole_mirror_altitude.m` in all production code
 
 ### 2. **Untraced Coefficients**
 - **Issue**: T_pa coefficients in `bounce_time_arr.m` not traced to literature
